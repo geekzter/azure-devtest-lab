@@ -16,7 +16,7 @@
 		},
 		"artifactRepoBranch": {
 			"type": "string",
-			"defaultValue": "master"
+			"defaultValue": "main"
 		},
 		"artifactRepoFolder": {
 			"type": "string",

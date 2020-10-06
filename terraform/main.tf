@@ -100,6 +100,7 @@ resource azurerm_template_deployment artifacts_repository {
 
   parameters                   = {
     labName                    = azurerm_dev_test_lab.lab.name
+    artifactRepoBranch         = var.artifact_repository_branch
     artifactRepoSecurityToken  = var.artifact_repository_token
   }
 

@@ -7,6 +7,9 @@ variable admin_user_name {
 variable artifact_repository_token {
   default                      = "dummy"
 }
+variable artifact_repository_branch {
+  default                      = "main"
+}
 
 
 # https://azure.microsoft.com/en-us/global-infrastructure/regions/
