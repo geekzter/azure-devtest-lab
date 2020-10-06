@@ -12,7 +12,7 @@
 		},
 		"artifactRepoUri": {
 			"type": "string",
-			"defaultValue": "https://github.com/geekzter/azure-devtest-lab"
+			"defaultValue": "https://github.com/geekzter/azure-devtest-lab.git"
 		},
 		"artifactRepoBranch": {
 			"type": "string",

@@ -4,11 +4,20 @@ variable admin_object_id {
 variable admin_user_name {
   default                      = "labadmin"
 }
+variable artifact_repository_branch {
+  default                      = "main"
+}
+variable artifact_repository_display_name {
+  default                      = "Sample Repository"
+}
 variable artifact_repository_token {
   default                      = "dummy"
 }
-variable artifact_repository_branch {
-  default                      = "main"
+variable artifact_repository_url {
+  default                      = "https://github.com/geekzter/azure-devtest-lab.git"
+}
+variable pool_vm_size {
+  default                      = "Standard_DS4"
 }
 
 

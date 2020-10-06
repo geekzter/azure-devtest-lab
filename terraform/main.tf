@@ -102,6 +102,8 @@ resource azurerm_template_deployment artifacts_repository {
     labName                    = azurerm_dev_test_lab.lab.name
     artifactRepoBranch         = var.artifact_repository_branch
     artifactRepoSecurityToken  = var.artifact_repository_token
+    artifactRepoUri            = var.artifact_repository_url
+    artifactRepositoryDisplayName = var.artifact_repository_display_name
   }
 
   depends_on                   = [azurerm_dev_test_lab.lab] # Explicit dependency for ARM templates
@@ -130,13 +132,13 @@ resource azurerm_dev_test_windows_virtual_machine example {
   lab_name                     = azurerm_dev_test_lab.lab.name
   resource_group_name          = azurerm_resource_group.lab_resource_group.name
   location                     = azurerm_resource_group.lab_resource_group.location
-  size                         = "Standard_DS2"
+  size                         = var.pool_vm_size
   username                     = var.admin_user_name
   password                     = random_string.password.result
   lab_virtual_network_id       = azurerm_dev_test_virtual_network.network.id
   lab_subnet_name              = azurerm_dev_test_virtual_network.network.subnet[0].name
   storage_type                 = "Premium"
-  notes                        = "Some notes about this Virtual Machine."
+  notes                        = "Initially created VM adeed to claimable pool"
 
   gallery_image_reference {
     offer                      = "WindowsServer"
