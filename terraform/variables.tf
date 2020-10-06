@@ -4,6 +4,10 @@ variable admin_object_id {
 variable admin_user_name {
   default                      = "labadmin"
 }
+variable artifact_repository_token {
+  default                      = "dummy"
+}
+
 
 # https://azure.microsoft.com/en-us/global-infrastructure/regions/
 # https://azure.microsoft.com/en-us/global-infrastructure/services/?products=devtest-lab

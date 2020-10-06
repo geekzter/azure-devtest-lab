@@ -1,12 +1,13 @@
 locals {
+  # https://docs.microsoft.com/en-us/azure/devtest-labs/add-artifact-repository
   password                     = ".Az9${random_string.password.result}"
   suffix                       = random_string.suffix.result
   tags                         = map(
-      "application",             "Dev/Test Lab",
-      "environment",             "dev",
-      "provisioner",             "terraform",
-      "suffix",                  local.suffix,
-      "workspace",               terraform.workspace
+    "application",               "Dev/Test Lab",
+    "environment",               "dev",
+    "provisioner",               "terraform",
+    "suffix",                    local.suffix,
+    "workspace",                 terraform.workspace
   )
 }
 
@@ -90,6 +91,21 @@ resource azurerm_dev_test_lab lab {
   tags                         = local.tags
 }
 
+resource azurerm_template_deployment artifacts_repository {
+  name                         = "${azurerm_resource_group.lab_resource_group.name}-artifacts"
+  resource_group_name          = azurerm_resource_group.lab_resource_group.name
+  deployment_mode              = "Incremental"
+
+  template_body                = file("${path.module}/lab-artifact-repository.json")
+
+  parameters                   = {
+    labName                    = azurerm_dev_test_lab.lab.name
+    artifactRepoSecurityToken  = var.artifact_repository_token
+  }
+
+  depends_on                   = [azurerm_dev_test_lab.lab] # Explicit dependency for ARM templates
+}
+
 resource azurerm_dev_test_virtual_network network {
   name                         = "${azurerm_resource_group.lab_resource_group.name}-network"
   lab_name                     = azurerm_dev_test_lab.lab.name
@@ -99,6 +115,8 @@ resource azurerm_dev_test_virtual_network network {
     use_public_ip_address      = "Allow"
     use_in_virtual_machine_creation = "Allow"
   }
+
+  tags                         = local.tags
 }
 
 data azurerm_key_vault lab_vault {
@@ -125,4 +143,6 @@ resource azurerm_dev_test_windows_virtual_machine example {
     sku                        = "2019-Datacenter"
     version                    = "latest"
   }
+
+  tags                         = local.tags
 }
