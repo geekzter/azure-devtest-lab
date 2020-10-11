@@ -1,0 +1,11 @@
+{
+    "labId": {
+        "value": "${lab_id}"
+    },
+    "virtualNetworkId": {
+        "value": "${virtual_network_id}"
+    },
+    "virtualNetworkSubnetId": {
+        "value": "${virtual_network_subnet_id}"
+    }
+}
