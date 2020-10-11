@@ -1,0 +1,23 @@
+{
+    "labName": {
+        "value": "${lab_name}"
+    },
+    "artifactRepositoryDisplayName": {
+        "value": "${artifact_repository_displayname}"
+    },
+    "artifactRepoUri": {
+        "value": "${artifact_repository_uri}"
+    },
+    "artifactRepoBranch": {
+        "value": "${artifact_repository_branch}"
+    },
+    "artifactRepoFolder": {
+        "value": "${artifact_repository_folder}"
+    },
+    "artifactRepoType": {
+        "value": "${artifact_repository_type}"
+    },
+    "artifactRepoSecurityToken": {
+        "value": "${artifact_repository_token}"
+    }
+}
